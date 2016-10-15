@@ -1,0 +1,19 @@
+$small: 992px
+$large: 1200px
+
+@mixin respond-to($media) 
+	@if $media == small-screen 
+		@media only screen and (max-width: $small) 
+			@content
+	@if $media == landscape 
+		@media only screen and (orientation: landscape) 
+			@content
+	@else if $media == medium-screen 
+		@media only screen and (min-width: $small + 1) and (max-width: $large - 1) 
+			@content
+	@else if $media == wide-screen 
+		@media only screen and (min-width: $large) 
+			@content		
+@mixin retina
+	@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) 
+		@content
